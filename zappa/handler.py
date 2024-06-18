@@ -406,7 +406,12 @@ class LambdaHandler:
             # Couldn't figure out how to get the value into stdout with StringIO..
             # Read the log for now. :[]
             import shlex
-            management.call_command(*shlex.split(event['manage']))
+            a = shlex.split(event['manage'])
+            
+            print(a)
+            print(event['manage'].split(' '))
+            
+            management.call_command(*a)
             return {}
 
         # This is an AWS-event triggered invocation.
